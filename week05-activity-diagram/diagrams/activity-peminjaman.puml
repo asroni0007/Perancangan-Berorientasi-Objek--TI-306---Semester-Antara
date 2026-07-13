@@ -1,0 +1,20 @@
+@startuml
+start
+:Anggota mengajukan peminjaman;
+if (Buku tersedia?) then (Ya)
+  if (Ada tunggakan?) then (Ya)
+    :Tolak: selesaikan tunggakan;
+  else (Tidak)
+    if (Buku aktif >= 3?) then (Ya)
+      :Tolak: batas peminjaman tercapai;
+    else (Tidak)
+      :Buat catatan peminjaman;
+      :Kurangi stok buku;
+      :Kirim konfirmasi;
+    endif
+  endif
+else (Tidak)
+  :Tolak: stok habis;
+endif
+stop
+@enduml

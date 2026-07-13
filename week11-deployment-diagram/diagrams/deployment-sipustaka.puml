@@ -1,0 +1,24 @@
+@startuml
+node "Client Device" as client {
+  artifact "Browser/Mobile App" as browser
+}
+
+cloud "Cloud / Container Platform" {
+  node "Reverse Proxy / Load Balancer" as proxy
+  node "API Server Container" as api {
+    artifact "server.js"
+  }
+  node "AI/ML Service Container" as ai {
+    artifact "ai-service.js"
+  }
+  database "Database" as db
+  node "Secret Manager" as secret
+}
+
+browser --> proxy : HTTPS
+proxy --> api : HTTP internal
+api --> db : SQL/TCP
+api --> ai : HTTP/JSON
+api ..> secret : read config/API key
+ai ..> secret : read config/API key
+@enduml

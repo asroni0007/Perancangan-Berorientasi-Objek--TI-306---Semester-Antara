@@ -1,0 +1,19 @@
+flowchart LR
+  subgraph ClientNode["Device: Client"]
+    Browser["Artifact: Browser/Mobile App"]
+  end
+
+  subgraph Cloud["Cloud / Container Platform"]
+    Proxy["Node: Reverse Proxy / Load Balancer"]
+    API["Container: API Server\nArtifact: server.js"]
+    AI["Container: AI/ML Service\nArtifact: ai-service.js"]
+    DB[("Node: Database")]
+    Secret["Secret Manager\nAPI key/config"]
+  end
+
+  Browser -->|HTTPS| Proxy
+  Proxy -->|HTTP internal| API
+  API -->|SQL/TCP| DB
+  API -->|HTTP JSON| AI
+  API -. membaca konfigurasi .-> Secret
+  AI -. membaca konfigurasi .-> Secret

@@ -1,0 +1,37 @@
+classDiagram
+  class Buku {
+    +String isbn
+    +String judul
+    +String kategori
+    +Number jumlahEksemplar
+    +Number eksemplarTersedia
+  }
+
+  class Anggota {
+    +Number id
+    +String nama
+    +String email
+  }
+
+  class Peminjaman {
+    +Number id
+    +Date tanggalPinjam
+    +String status
+  }
+
+  class Perpustakaan {
+    -Buku[] buku
+    -Anggota[] anggota
+    -Peminjaman[] peminjaman
+    -Number nomorPeminjaman
+    +tambahBuku(buku)
+    +tambahAnggota(anggota)
+    +pinjamkan(isbn, idAnggota, tanggal)
+    +daftarPeminjamanAktif()
+  }
+
+  Perpustakaan "1" o-- "0..*" Buku : mengelola
+  Perpustakaan "1" o-- "0..*" Anggota : mendaftarkan
+  Perpustakaan "1" o-- "0..*" Peminjaman : mencatat
+  Peminjaman "0..*" --> "1" Buku : buku
+  Peminjaman "0..*" --> "1" Anggota : peminjam

@@ -1,0 +1,31 @@
+{
+  "name": "praktikum-pbo-ti306",
+  "version": "2.0.0",
+  "description": "Praktikum Perancangan Berorientasi Objek TI-306 dengan UML Mermaid/PlantUML dan evaluasi AI",
+  "type": "module",
+  "scripts": {
+    "week01": "node week01-pengenalan-oop/index.js",
+    "week02": "node week02-class-object/index.js",
+    "week03": "node week03-analisis-kebutuhan/index.js",
+    "week04": "node week04-use-case-diagram/index.js",
+    "week05": "node week05-activity-diagram/index.js",
+    "week06": "node week06-class-diagram/index.js",
+    "week07": "node week07-sequence-diagram/index.js",
+    "week08": "node week08-uts-latihan/index.js",
+    "week09": "node week09-communication-diagram/index.js",
+    "week10": "node week10-state-machine-diagram/index.js",
+    "week11": "node week11-deployment-diagram/server.js",
+    "week11:ai": "node week11-deployment-diagram/ai-service.js",
+    "week12": "node week12-prinsip-oop/index.js",
+    "week13": "node week13-design-pattern/index.js",
+    "week13:smell": "node week13-design-pattern/code-smell-exercise.js",
+    "week14": "node week14-dokumentasi/generate-docs.js",
+    "week15": "node week15-presentasi-demo/demo.js",
+    "week16": "node week16-uas-studi-kasus/index.js",
+    "check": "node scripts/check-project.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,29 @@
+@startuml
+actor Anggota as A
+participant SistemPerpustakaan as S
+participant Katalog as K
+participant LayananNotifikasi as N
+
+A -> S : 1. ajukanPeminjaman(isbn)
+activate S
+S -> S : 2. validasi anggota
+S -> K : 3. cekKetersediaan(isbn)
+activate K
+K --> S : 4. status ketersediaan
+deactivate K
+
+alt buku tersedia
+  S -> K : 5. kurangiStok(isbn)
+  activate K
+  K --> S : 6. stok diperbarui
+  deactivate K
+  S -> N : 7. kirimKonfirmasi(anggota, buku)
+  activate N
+  N --> A : 8. notifikasi berhasil
+  deactivate N
+  S --> A : 9. data peminjaman
+else buku tidak tersedia
+  S --> A : 5a. penolakan peminjaman
+end
+deactivate S
+@enduml

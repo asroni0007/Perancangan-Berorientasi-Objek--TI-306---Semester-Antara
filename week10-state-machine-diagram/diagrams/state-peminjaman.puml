@@ -1,0 +1,14 @@
+@startuml
+[*] --> PENGAJUAN
+PENGAJUAN --> DIPINJAM : disetujui
+PENGAJUAN --> DITOLAK : ditolak
+DIPINJAM --> DIPERPANJANG : perpanjang disetujui
+DIPINJAM --> TERLAMBAT : melewati jatuh tempo
+DIPINJAM --> DIKEMBALIKAN : dikembalikan tepat waktu
+DIPERPANJANG --> TERLAMBAT : melewati jatuh tempo baru
+DIPERPANJANG --> DIKEMBALIKAN : dikembalikan
+TERLAMBAT --> DIKEMBALIKAN : buku dikembalikan
+DIKEMBALIKAN --> SELESAI : transaksi ditutup
+DITOLAK --> [*]
+SELESAI --> [*]
+@enduml

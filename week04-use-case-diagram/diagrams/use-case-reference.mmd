@@ -1,0 +1,23 @@
+flowchart LR
+  Anggota["👤 Anggota"]
+  Pustakawan["👤 Pustakawan"]
+
+  subgraph SIPUSTAKA["SIPUSTAKA"]
+    UC1([Cari Buku])
+    UC2([Ajukan Peminjaman])
+    UC3([Kembalikan Buku])
+    UC4([Perpanjang Peminjaman])
+    UC5([Daftar Anggota])
+    UC6([Kelola Data Buku])
+    UC7([Validasi Ketersediaan dan Tunggakan])
+  end
+
+  Anggota --- UC1
+  Anggota --- UC2
+  Anggota --- UC3
+  Anggota --- UC4
+  Pustakawan --- UC5
+  Pustakawan --- UC6
+
+  UC2 -. include .-> UC7
+  UC4 -. include .-> UC7

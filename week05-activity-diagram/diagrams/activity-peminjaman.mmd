@@ -1,0 +1,15 @@
+flowchart TD
+  A([Mulai]) --> B[Anggota mengajukan peminjaman]
+  B --> C{Buku tersedia?}
+  C -- Tidak --> D[Tolak: stok habis]
+  D --> Z([Selesai])
+  C -- Ya --> E{Ada tunggakan?}
+  E -- Ya --> F[Tolak: selesaikan tunggakan]
+  F --> Z
+  E -- Tidak --> G{Buku aktif sudah 3 atau lebih?}
+  G -- Ya --> H[Tolak: batas peminjaman tercapai]
+  H --> Z
+  G -- Tidak --> I[Buat catatan peminjaman]
+  I --> J[Kurangi stok buku]
+  J --> K[Kirim konfirmasi]
+  K --> Z

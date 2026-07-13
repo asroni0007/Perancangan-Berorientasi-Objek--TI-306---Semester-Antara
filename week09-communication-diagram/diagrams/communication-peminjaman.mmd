@@ -1,0 +1,13 @@
+flowchart LR
+  A["anggota:Anggota"]
+  S["sistem:SistemPerpustakaan"]
+  K["katalog:Katalog"]
+  N["notifikasi:LayananNotifikasi"]
+  L["audit:LogAudit"]
+
+  A -->|"1: ajukanPeminjaman(isbn)"| S
+  S -->|"1.1: prosesPermintaan(isbn)"| K
+  K -->|"1.2: stokBerkurang(isbn)"| S
+  S -->|"1.3: peminjamanSukses(isbn)"| N
+  S -->|"1.4: catatPeminjaman(isbn)"| L
+  N -->|"1.5: konfirmasi"| A

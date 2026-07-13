@@ -1,0 +1,15 @@
+@startuml
+left to right direction
+object "anggota:Anggota" as A
+object "sistem:SistemPerpustakaan" as S
+object "katalog:Katalog" as K
+object "notifikasi:LayananNotifikasi" as N
+object "audit:LogAudit" as L
+
+A --> S : 1: ajukanPeminjaman(isbn)
+S --> K : 1.1: prosesPermintaan(isbn)
+K --> S : 1.2: stokBerkurang(isbn)
+S --> N : 1.3: peminjamanSukses(isbn)
+S --> L : 1.4: catatPeminjaman(isbn)
+N --> A : 1.5: konfirmasi
+@enduml

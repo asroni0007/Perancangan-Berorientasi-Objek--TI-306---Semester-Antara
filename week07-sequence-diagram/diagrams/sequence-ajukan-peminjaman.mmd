@@ -1,0 +1,20 @@
+sequenceDiagram
+  actor A as Anggota
+  participant S as SistemPerpustakaan
+  participant K as Katalog
+  participant N as LayananNotifikasi
+
+  A->>S: 1. ajukanPeminjaman(isbn)
+  S->>S: 2. validasi anggota
+  S->>K: 3. cekKetersediaan(isbn)
+  K-->>S: 4. status ketersediaan
+
+  alt buku tersedia
+    S->>K: 5. kurangiStok(isbn)
+    K-->>S: 6. stok diperbarui
+    S->>N: 7. kirimKonfirmasi(anggota, buku)
+    N-->>A: 8. notifikasi berhasil
+    S-->>A: 9. data peminjaman
+  else buku tidak tersedia
+    S-->>A: 5a. penolakan peminjaman
+  end

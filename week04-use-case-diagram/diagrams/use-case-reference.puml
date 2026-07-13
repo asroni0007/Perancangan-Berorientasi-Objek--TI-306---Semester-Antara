@@ -1,0 +1,26 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor Anggota
+actor Pustakawan
+
+rectangle SIPUSTAKA {
+  usecase "Cari Buku" as UC1
+  usecase "Ajukan Peminjaman" as UC2
+  usecase "Kembalikan Buku" as UC3
+  usecase "Perpanjang Peminjaman" as UC4
+  usecase "Daftar Anggota" as UC5
+  usecase "Kelola Data Buku" as UC6
+  usecase "Validasi Ketersediaan\ndan Tunggakan" as UC7
+}
+
+Anggota --> UC1
+Anggota --> UC2
+Anggota --> UC3
+Anggota --> UC4
+Pustakawan --> UC5
+Pustakawan --> UC6
+UC2 .> UC7 : <<include>>
+UC4 .> UC7 : <<include>>
+@enduml

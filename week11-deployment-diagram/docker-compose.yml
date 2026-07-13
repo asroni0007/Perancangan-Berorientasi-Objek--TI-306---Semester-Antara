@@ -1,0 +1,24 @@
+services:
+  api-server:
+    build: .
+    command: ["node", "server.js"]
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      AI_SERVICE_URL: http://ai-service:3001
+    depends_on:
+      - ai-service
+    restart: unless-stopped
+
+  ai-service:
+    build: .
+    command: ["node", "ai-service.js"]
+    environment:
+      AI_PORT: 3001
+    expose:
+      - "3001"
+    restart: unless-stopped
+
+  # Pengembangan berikutnya dapat menambahkan database dan reverse proxy.
+  # Kredensial harus diletakkan pada environment/secret, bukan di repository.
